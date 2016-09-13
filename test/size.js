@@ -44,6 +44,12 @@ describe('gulp-responsive', function() {
       assert(_.isNumber(test));
     });
 
+    it('should recognize post-size reference-percentages from one another and calculate size', function() {
+      var test = size({ width: '50.00 height', height: '50%' }, { width: 100, height: 400 });
+      assert.equal(test.width, 100);
+      assert(_.isNumber(test.width));
+    });
+
     it('should throw an error on wrong input', function() {
       assert.throws(function() {
         size('wrong');
